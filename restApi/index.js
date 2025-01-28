@@ -10,8 +10,8 @@ getBtn.addEventListener('click', function(){
 });
 
 
-let fetchEmployees = function (){
+let fetchEmployees = function () {
     let http = new AppHttp();
     let url = `${serverUrl}/employees`;
     http.get(url);
-}
+  };
