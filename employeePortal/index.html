@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Employee Ajax|REST API</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script type="module" src="app.js"></script>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+</head>
+
+<body>
+    <!-- Nav Bar -->
+
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">EMPLOYEE PORTAL Rendering</a>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <div class="container-sm">
+        <div class="row align-items-center">
+            <section>
+                <h1 class="mt-4 bg-primary-subtle">Employee Portal</h1>
+                <p>
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                    industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+                    and
+                    scrambled it to make a type specimen book. It has survived not only five centuries, but also the
+                    leap
+                    into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with
+                    the
+                    release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
+                    publishing
+                    software like Aldus PageMaker including versions of Lorem Ipsum
+                </p>
+
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">
+                    Add Employee
+                </button>
+            </section>
+        </div>
+    </div>
+
+    <!--Add Employee Modal Form -->
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+        <div class="modal-dialog d-flex justify-content-center">
+            <div class="modal-content w-75">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel2">Employee Form</h5>
+                    <button type="button" data-bs-button-init data-bs-ripple-init class="btn-close"
+                        data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <form id="add-employee">
+                        <!-- First Name -->
+                        <div data-mdb-input-init class="form-outline mb-2">
+                            <input type="text" id="add-first-name" name="firstName" class="form-control" required />
+                            <label class="form-label" for="add-first-name">First Name</label>
+                        </div>
+
+                          <!-- Last Name -->
+                          <div data-mdb-input-init class="form-outline mb-2">
+                            <input type="text" id="add-last-name" name="lastName" class="form-control" required />
+                            <label class="form-label" for="add-last-name">Last Name</label>
+                        </div>
+
+                        <!-- Email input -->
+                        <div data-mdb-input-init class="form-outline mb-2">
+                            <input type="email" id="add-email" name="email" class="form-control" required />
+                            <label class="form-label" for="add-email">Email address</label>
+                        </div>
+
+                        <!-- Gender -->
+                         <label for="gender">Gender</label> <br>
+                          <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="add-male" value="male">
+                            <label class="form-check-label" for="male">Male</label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="add-female" value="female">
+                            <label class="form-check-label" for="female">Female</label>
+                          </div>
+
+                        <!-- ip address input -->
+                        <div data-mdb-input-init class="form-outline mb-2">
+                            <input type="text" id="add-ip" class="form-control" />
+                            <label class="form-label" for="add-ip">Ip Address</label>
+                        </div>
+
+                        <!-- Submit button -->
+                        <button type="submit" data-mdb-button-init data-mdb-ripple-init
+                            class="btn btn-primary btn-block">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+
+    <!--Employee Table  -->
+    <div class="container-sm mt-4">
+        <div class="row">
+            <div class="col">
+                <table
+                    class="table table-hover border-dark table-bordered text-center table-dark table-striped-columns">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Employee ID</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Email</th>
+                            <th>Gender</th>
+                            <th>Ip Address</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="table-body">
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
