@@ -1,7 +1,5 @@
 //This file configure and starts the server that is (Begins listening for incoming requests on the specified hostname and port)
 
-
-
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');

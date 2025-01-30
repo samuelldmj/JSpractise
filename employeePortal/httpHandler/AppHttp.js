@@ -110,7 +110,6 @@ export class AppHttp {
     //DELETE REQUEST HANDLING
     delete(url, callback){
         this.http.open('DELETE', url, true);
-        this.http.setRequestHeader('Content-Type', 'application/json');
         this.http.send();
 
         this.http.onload = () => {
