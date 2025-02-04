@@ -165,14 +165,99 @@ tableBody.addEventListener('click', function (e) {
 
     let targetElement = e.target;
     if (targetElement.classList.contains('delete')) {
-        let selectedRecord = targetElement.parentElement.parentElement.firstElementChild.textContent;
-        let url = `${serverUrl}/employees/${selectedRecord}`;
+        let selectedEmployeeRecordId = targetElement.parentElement.parentElement.firstElementChild.textContent;
+        let url = `${serverUrl}/employees/${selectedEmployeeRecordId}`;
 
         http.delete(url, function (response) {
             alert(JSON.stringify(response));
             fetchAllEmployees();
         })
     }
+
+
+    //PUT OR UPDATE OPERATION
+    if (targetElement.classList.contains('update')) {
+        let selectedEmployeeRecordId = targetElement.parentElement.parentElement.firstElementChild.textContent;
+        let url = `${serverUrl}/employees`;
+        http.get(url, function (err, employeesData) {
+            if (err) {
+                console.error(err);
+            } else {
+                let selectedEmployeeRecord = employeesData.find(employee => {
+                    return employee.id === selectedEmployeeRecordId.trim();
+                })
+
+                console.log(selectedEmployeeRecord);
+                populateSelectedModal(selectedEmployeeRecord);
+            }
+        });
+    }
 })
 
-//PUT OR UPDATE OPERATION
+let populateSelectedModal = (selectedEmployeeRecord) => {
+    let updateEmpId = document.querySelector('#update-emp-id');
+    if (updateEmpId) updateEmpId.value = selectedEmployeeRecord.id;
+    else console.error('Element with id update-emp-id not found');
+
+    // document.querySelector('#update-emp-id').value = selectedEmployeeRecord.id;
+    document.querySelector('#update-first-name').value = selectedEmployeeRecord.first_name;
+    document.querySelector('#update-last-name').value = selectedEmployeeRecord.last_name;
+    document.querySelector('#update-email').value = selectedEmployeeRecord.email;
+
+    // Check the appropriate gender radio button
+    let genderRadios = document.getElementsByName('inlineRadioOptions');
+    for (let radio of genderRadios) {
+        if (radio.value === selectedEmployeeRecord.gender) {
+            radio.checked = true;
+            break;
+        }
+    }
+
+    document.querySelector('#update-ip').value = selectedEmployeeRecord.ip_address;
+
+    let modalElement = document.getElementById('update-employee-form');
+    if (modalElement) {
+        let modal = new bootstrap.Modal(modalElement);
+        modal.show();
+    } else {
+        console.error('Modal element not found');
+    }
+}
+
+
+let updateEmployeeForm = document.querySelector('#update-employee');
+
+updateEmployeeForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    let employeeId = document.querySelector('#update-emp-id').value.trim();
+    let http = new AppHttp();
+
+    let url = `${serverUrl}/employees/${employeeId}`;
+
+    let employee = {
+        first_name: document.getElementById('update-first-name').value,
+        last_name: document.getElementById('update-last-name').value,
+        email: document.getElementById('update-email').value,
+        ip_address: document.getElementById('update-ip').value,
+        gender: document.querySelector('input[name="inlineRadioOptions"]:checked')?.value || 'unknown'
+    };
+
+
+    http.put(url, employee, function (err, response) {
+        if (err) {
+            console.error(err);
+        } else {
+            alert(JSON.stringify(response));
+            fetchAllEmployees(); // Refresh the employee list
+            console.log(employee);
+            console.log(url);
+            // Close the modal after form submission
+            let modalElement = document.getElementById('update-employee-form');
+            if (modalElement) {
+                let modal = new bootstrap.Modal(modalElement);
+                modal.hide();
+            }
+        }
+    });
+
+})

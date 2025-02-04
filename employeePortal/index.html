@@ -102,6 +102,72 @@
     </div>
     <!-- Modal -->
 
+
+    <!--Update Employee Modal Form -->
+    <!-- Modal -->
+    <div class="modal fade" id="update-employee-form" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+        <div class="modal-dialog d-flex justify-content-center">
+            <div class="modal-content w-75">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel2">Update Employee Record Form</h5>
+                    <button type="button" data-bs-button-init data-bs-ripple-init class="btn-close"
+                        data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <form id="update-employee">
+                         <!-- id -->
+                         <div data-mdb-input-init class="form-outline mb-2">
+                            <input type="text" id="update-emp-id" name="emp-id" class="form-control" hidden />
+                            <!-- <label class="form-label" for="update-emp-id">Employee ID</label> -->
+                        </div>
+
+                        <!-- First Name -->
+                        <div data-mdb-input-init class="form-outline mb-2">
+                            <input type="text" id="update-first-name" name="firstName" class="form-control" required />
+                            <label class="form-label" for="update-first-name">First Name</label>
+                        </div>
+
+                          <!-- Last Name -->
+                          <div data-mdb-input-init class="form-outline mb-2">
+                            <input type="text" id="update-last-name" name="lastName" class="form-control" required />
+                            <label class="form-label" for="update-last-name">Last Name</label>
+                        </div>
+
+                        <!-- Email input -->
+                        <div data-mdb-input-init class="form-outline mb-2">
+                            <input type="email" id="update-email" name="email" class="form-control" required />
+                            <label class="form-label" for="update-email">Email address</label>
+                        </div>
+
+                        <!-- Gender -->
+                         <label for="gender">Gender</label> <br>
+                          <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="update-male" value="male">
+                            <label class="form-check-label" for="update-male">Male</label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="update-female" value="female">
+                            <label class="form-check-label" for="update-female">Female</label>
+                          </div>
+
+                        <!-- ip address input -->
+                        <div data-mdb-input-init class="form-outline mb-2">
+                            <input type="text" id="update-ip" name="ipAddress" class="form-control" />
+                            <label class="form-label" for="update-ip">Ip Address</label>
+                        </div>
+
+                        <!-- Submit button -->
+                        <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#update-employee-form">
+                            Update Employee Record
+                       </button>
+                       
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+
     <!--Employee Table  -->
     <div class="container-sm mt-4">
         <div class="row">
