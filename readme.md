@@ -220,3 +220,80 @@ myAppHttp.get('https://jsonplaceholder.typicode.com/todos/1');
 I hope this explanation clears up how the constructor initializes the `http` property! Let me know if you need more examples or further explanation.
 
 ```
+```
+
+## question 3:
+
+```plaintext
+
+### **Object and Instance Concept in JavaScript**
+
+In JavaScript, **objects** and **instances** are terms that refer to specific ways of managing data and behavior. 
+
+- **Object**: An object is a collection of key-value pairs, where each key is a property, and the value could be a function or any data type. When you create an object from a class, you instantiate an "instance" of that class.
+
+- **Instance**: An instance is a specific object created from a class blueprint. It represents an individual version of that class, having its own unique data and behaviors.
+
+### In the context of your code:
+
+1. **AppHttp (Class)**:
+   - `AppHttp` is a **class**, a blueprint or template for creating objects. It's like a **cookie cutter** that defines properties and methods for the objects it creates.
+   - It defines a constructor method, which gets run when you create an object from that class. The constructor initializes properties like `this.http` (which will hold an instance of the `XMLHttpRequest` object).
+
+2. **myAppHttp (Instance)**:
+   - `myAppHttp` is an **instance** of the `AppHttp` class. When you create this instance using `new AppHttp()`, you get an object that is a specific version of the class with its own properties and methods.
+   - For example, `myAppHttp` is an individual object that has a `http` property initialized as a new `XMLHttpRequest` object.
+
+### What is an `XMLHttpRequest` object?
+
+- `XMLHttpRequest` is an **object** provided by the browser's JavaScript environment. It is used to interact with HTTP requests, such as fetching data from a server asynchronously.
+- When you create a new instance of `XMLHttpRequest` (`this.http = new XMLHttpRequest();`), it gives you a fresh object with the ability to make HTTP requests, send them, and handle responses.
+
+### Why is `XMLHttpRequest` called an object and `AppHttp` called an instance?
+
+- **XMLHttpRequest** is called an **object** because it is an instance of a built-in JavaScript class (in this case, provided by the browser). It's used for a specific purpose (making HTTP requests) and can have properties and methods, such as `.open()`, `.send()`, `.onload`, etc.
+  
+- **AppHttp** is called a **class**, not an object. A class is like a blueprint, while an **instance** is a specific, concrete object created from that class. So, when we call `new AppHttp()`, we are creating an **instance** of the `AppHttp` class. The `myAppHttp` variable will now hold that instance.
+
+### Comparing `this.http = new XMLHttpRequest();` and other assignments
+
+Let’s break down these two lines:
+
+1. **`this.http = new XMLHttpRequest();`**:
+   - `this` refers to the current instance of the `AppHttp` class.
+   - Inside the constructor of `AppHttp`, `this` is used to set up the `http` property of the current instance (`myAppHttp` in this case).
+   - `this.http` will hold a new `XMLHttpRequest` object specific to that instance, and each instance can have its own unique `http` property.
+
+2. **`AppHttp.http = new XMLHttpRequest();`**:
+   - This would assign a new `XMLHttpRequest` object to the **class** itself, not an instance. In JavaScript, you can also have **static properties** on a class, but this would not be the typical pattern here, as each instance should have its own `http` property.
+   - This would mean that you’re trying to assign the `http` property directly to the `AppHttp` class, not to any instance created from it. It’s generally not how instance-specific data like HTTP requests should be handled.
+
+3. **`myAppHttp.http = new XMLHttpRequest();`**:
+   - This assigns a new `XMLHttpRequest` object to the `http` property of the **instance** `myAppHttp`.
+   - This would override the `http` property for the specific instance, but it’s redundant since the `constructor` already does this for each instance.
+
+### What does `this` refer to?
+
+- Inside the constructor of `AppHttp`, `this` refers to the **current instance** of `AppHttp` being created. So, when you write `this.http = new XMLHttpRequest();`, you are attaching a new `XMLHttpRequest` object to that instance’s `http` property.
+  
+- When you access `this` in a method (e.g., in the `get()` method), `this` refers to the same instance (`myAppHttp` in this case), so you can manipulate the `http` property associated with that specific instance.
+
+### Example Breakdown:
+
+```js
+let myAppHttp = new AppHttp();
+```
+- This line creates an **instance** (`myAppHttp`) of the `AppHttp` class.
+- The constructor (`constructor()`) is called, and inside it, `this.http = new XMLHttpRequest();` initializes a new `XMLHttpRequest` object and attaches it to the `myAppHttp` instance.
+
+```js
+myAppHttp.get('https://jsonplaceholder.typicode.com/todos/1');
+```
+- This line calls the `get()` method on the `myAppHttp` instance.
+- Inside `get()`, `this.http` refers to the `XMLHttpRequest` object attached to that specific instance (in this case, `myAppHttp`).
+
+### Conclusion:
+- **Objects** (like `XMLHttpRequest`) hold specific data and functionality, while an **instance** is an individual object created from a class (like `myAppHttp` from `AppHttp`).
+- The `this` keyword refers to the specific instance of the class that is currently being worked with.
+
+```
