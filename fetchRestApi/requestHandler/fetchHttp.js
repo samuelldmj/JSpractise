@@ -5,7 +5,7 @@ export class FetchHttp {
      }
 
 
-     get(url){
+     static get(url){
 
         return new Promise((resolve, reject) => {
             fetch(url).then(response => {
@@ -18,7 +18,7 @@ export class FetchHttp {
         })
      }
 
-     post(url, data){
+     static post(url, data){
         return new Promise((resolve, reject) => {
             fetch(url, {
                method : 'POST',
@@ -27,7 +27,7 @@ export class FetchHttp {
                },
                body : JSON.stringify(data)
             }).then(response => {
-               return response.json()
+               return response.json();
             }).then(data => {
                 resolve(data);
             }).catch(err => {
@@ -38,7 +38,7 @@ export class FetchHttp {
 
 
 
-     put(url, data){
+     static put(url, data){
         return new Promise((resolve, reject) => {
             fetch(url, {
                 method : 'PUT',
@@ -56,11 +56,10 @@ export class FetchHttp {
          })
      }
 
-     delete(url){
+     static delete(url){
         return new Promise((resolve, reject) => {
             fetch(url, {
                 method : 'DELETE',
-                body : JSON.stringify(data)
              }).then(response => {
                 return response.json()
              }).then(data => {
